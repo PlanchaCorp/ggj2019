@@ -1,21 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StormTimer : MonoBehaviour
 {
     [SerializeField]
-    private float initialTimer = 10;
+    private float initialStormTimer = 10;
+    private float INITIALGAMEOVERWAITTIMER = 3;
+    private float INITIALGAMEOVERAPPARITIONTIMER = 5;
 
     private SpriteRenderer stormSprite;
-    private float currentTimer;
+    private TextMeshProUGUI gameOverTextMesh;
+    private float currentStormTimer;
+    private float currentGameOverWaitTimer;
+    private float currentGameOverApparitionTimer;
     private bool runningOutOfTime;
+    private bool gameOverIsFadingIn;
     
     void Start()
     {
         runningOutOfTime = false;
-        currentTimer = initialTimer;
+        gameOverIsFadingIn = false;
+        currentStormTimer = initialStormTimer;
         stormSprite = gameObject.GetComponent<SpriteRenderer>();
+        gameOverTextMesh = transform.Find("GameOverCanvas").GetComponentInChildren<TextMeshProUGUI>();
         if (stormSprite == null)
         {
             Debug.LogError("Storm sprite not attached to Storm object !");
@@ -25,17 +34,44 @@ public class StormTimer : MonoBehaviour
     
     void Update()
     {
-        if (currentTimer > 0)
+        if (currentStormTimer > 0)
         {
-            currentTimer -= Time.deltaTime;
-            if (currentTimer < initialTimer / 2)
+            currentStormTimer -= Time.deltaTime;
+            if (currentStormTimer < initialStormTimer / 2)
             {
-                stormSprite.color = new Color(1f, 1f, 1f, 1 - currentTimer / (initialTimer / 2));
+                stormSprite.color = new Color(1f, 1f, 1f, 1 - currentStormTimer / (initialStormTimer / 2));
             }
         } else if (!runningOutOfTime)
         {
             runningOutOfTime = true;
-            Debug.Log("Running out of time.");
+            TriggerGameOver();
         }
+        if (runningOutOfTime)
+        {
+            if (gameOverIsFadingIn)
+            {
+                currentGameOverApparitionTimer -= Time.deltaTime;
+                Color gameOverTextColor = gameOverTextMesh.color;
+                gameOverTextMesh.color = new Color(gameOverTextColor.r, gameOverTextColor.g, gameOverTextColor.b, 1 - currentGameOverApparitionTimer / INITIALGAMEOVERAPPARITIONTIMER);
+            } else
+            {
+                currentGameOverWaitTimer -= Time.deltaTime;
+                if (currentGameOverWaitTimer < 0)
+                {
+                    gameOverIsFadingIn = true;
+                }
+            }
+        }
+    }
+
+    private void TriggerGameOver()
+    {
+        currentGameOverApparitionTimer = INITIALGAMEOVERAPPARITIONTIMER;
+        currentGameOverWaitTimer = INITIALGAMEOVERWAITTIMER;
+    }
+
+    public bool HasRunnedOutOfTime()
+    {
+        return runningOutOfTime;
     }
 }
