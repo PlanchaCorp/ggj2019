@@ -27,6 +27,7 @@ public class CharacterObjects : MonoBehaviour {
     void PlaceNeon()
     {
         currentNeonCount--;
-        Instantiate(Resources.Load("Prefabs/Neon"));
+        GameObject neon = Instantiate(Resources.Load("Prefabs/Neon"));
+        neon.transform.position = transform.position;
     }
 }
