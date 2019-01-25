@@ -4,34 +4,67 @@ using UnityEngine;
 
 public class CharacterInteraction : MonoBehaviour
 {
-    private CircleCollider2D interactionField;
+    [SerializeField]
+    private int initialNeonCount = 3;
 
+    private int currentNeonCount;
+ 
     private bool isInteracting;
+    private bool canInteractAgain;
+
+    public List<GameObject> interactibles;
+
+    
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        interactionField = GetComponentInChildren<CircleCollider2D>();
 
-        interactionField.enabled = false;
+        interactibles = new List<GameObject>();
+       
+        currentNeonCount = initialNeonCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("w") && !isInteracting)
+        if (Input.GetButtonDown("Fire2"))
         {
-            isInteracting = true;
+            Debug.Log("interaction");
+            foreach (GameObject item in interactibles)
+            {
+                Debug.Log(item.name);
+            }
+
         }
-        if( isInteracting)
+
+        if (Input.GetButtonDown("Fire1"))
         {
-            interactionField.enabled = true;
-          
-        }
-        if (Input.GetButtonUp("w"))
-        {
-            isInteracting = false;
+            if (currentNeonCount > 0)
+            {
+                PlaceNeon();
+            }
         }
 
     }
+
+    void RemoveNeon(GameObject neon)
+    {
+        currentNeonCount++;
+        Destroy(neon);
+    }
+
+
+    void PlaceNeon()
+    {
+        currentNeonCount--;
+        GameObject neon = Instantiate((GameObject)Resources.Load("Prefabs/Neon"));
+        neon.transform.position = transform.position;
+    }
+
+
+
 
 }
