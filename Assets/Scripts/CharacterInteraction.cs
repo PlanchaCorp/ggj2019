@@ -8,13 +8,13 @@ public class CharacterInteraction : MonoBehaviour
     private int initialNeonCount = 3;
 
     private int currentNeonCount;
- 
+
     private bool isInteracting;
     private bool canInteractAgain;
 
     public List<GameObject> interactibles;
 
-    
+
 
 
 
@@ -23,7 +23,7 @@ public class CharacterInteraction : MonoBehaviour
     {
 
         interactibles = new List<GameObject>();
-       
+
         currentNeonCount = initialNeonCount;
     }
 
@@ -33,10 +33,17 @@ public class CharacterInteraction : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             Debug.Log("interaction");
-            foreach (GameObject item in interactibles)
+            Queue<GameObject> items = new Queue<GameObject>(interactibles);
+            if (items.Count > 0)
             {
-                Debug.Log(item.name);
+                GameObject item = items.Dequeue();
+                if (item.CompareTag("Neon"))
+                    {
+                        RemoveNeon(item);
+                    }
             }
+           
+           
 
         }
 

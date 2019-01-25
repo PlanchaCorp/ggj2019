@@ -47,13 +47,7 @@ public class CharacterMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Move(isJumping);
-        if (isJumping)
-        {
-            GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
-        } else
-        {
-            GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
-        }
+       
     }
 
     IEnumerator RecoverFromJump()
