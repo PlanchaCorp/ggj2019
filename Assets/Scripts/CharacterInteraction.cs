@@ -33,10 +33,14 @@ public class CharacterInteraction : MonoBehaviour
 
         if (Input.GetKeyDown("n"))
         {
-            DayNightManager.SetDay(false);
+            DayNightManager.SetDay(!DayNightManager.GetDay());
             DayNightManager.ChangeCycle();
         }
 
+        if (!DayNightManager.GetDay())
+        {
+            return;
+        }
         if (Input.GetButtonDown("Fire2"))
         {
             Debug.Log("interaction");
