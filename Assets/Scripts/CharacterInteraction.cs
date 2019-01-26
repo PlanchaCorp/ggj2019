@@ -52,6 +52,11 @@ public class CharacterInteraction : MonoBehaviour
                     {
                         RemoveNeon(item);
                     }
+                if (item.CompareTag("Door"))
+                {
+                    Debug.Log("door");
+                    item.GetComponentInParent<DoorManager>().Open();
+                }
             }
            
            
