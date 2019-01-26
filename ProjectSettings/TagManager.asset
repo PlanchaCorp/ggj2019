@@ -52,3 +52,9 @@ TagManager:
   - name: Item
     uniqueID: 3529342753
     locked: 0
+  - name: Player
+    uniqueID: 3723537767
+    locked: 0
+  - name: UI
+    uniqueID: 2101217447
+    locked: 0
