@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Rift
   - Picture
+  - Snow
   layers:
   - Default
   - TransparentFX

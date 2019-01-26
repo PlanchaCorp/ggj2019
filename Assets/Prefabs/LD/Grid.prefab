@@ -752,7 +752,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3393002408988704101}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &2570580470481515026
 Tilemap:
@@ -875,7 +875,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1212,7 +1212,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3393002408988704101}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &4820668365801147534
 Tilemap:
@@ -1781,8 +1781,8 @@ Transform:
   - {fileID: 1845152172511555645}
   - {fileID: 513981408365936294}
   - {fileID: 5702788014034017334}
-  - {fileID: 8027944480934055813}
   - {fileID: 6398647919395284648}
+  - {fileID: 8027944480934055813}
   - {fileID: 1699739790486100528}
   - {fileID: 6185750867409678035}
   m_Father: {fileID: 0}
