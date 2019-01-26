@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class StormTimer : MonoBehaviour
+public class Storm : MonoBehaviour
 {
     [SerializeField]
     private float initialStormTimer = 10;
@@ -11,7 +12,9 @@ public class StormTimer : MonoBehaviour
     private float INITIALGAMEOVERAPPARITIONTIMER = 5;
     private float INITIALGAMEOVERRESTARTWAITTIMER = 2;
     private float INITIALGAMEOVERRESTARTAPPARITIONTIMER = 7;
+    private float INITIALFALLINGTIMER = 3.0f;
 
+    private GameObject player;
     private SpriteRenderer stormSprite;
     private TextMeshProUGUI gameOverTextMesh;
     private TextMeshProUGUI gameOverRestartTextMesh;
@@ -20,20 +23,23 @@ public class StormTimer : MonoBehaviour
     private float currentGameOverApparitionTimer;
     private float currentGamerOverRestartWaitTimer;
     private float currentGamerOverRestartApparitionTimer;
+    private bool stormHasStarted;
     private bool runningOutOfTime;
     private bool gameOverIsFadingIn;
     private bool gameOverIsDisplayed;
     private bool gameOverRestartIsFadingIn;
     private bool gameOverRestartIsDisplayed;
 
+    private float fallingTimer;
+    private bool deathByFall;
+
+
 
     void Start()
     {
-        runningOutOfTime = false;
-        gameOverIsFadingIn = false;
-        gameOverIsDisplayed = false;
-        gameOverRestartIsFadingIn = false;
-        gameOverRestartIsDisplayed = false;
+        player = GameObject.FindGameObjectWithTag("Player");
+        deathByFall = false;
+        stormHasStarted = false;
         currentStormTimer = initialStormTimer;
         stormSprite = gameObject.GetComponent<SpriteRenderer>();
         gameOverTextMesh = GameObject.FindGameObjectWithTag("GameOverText").GetComponent<TextMeshProUGUI>();
@@ -42,19 +48,34 @@ public class StormTimer : MonoBehaviour
         {
             Debug.LogError("Storm sprite not attached to Storm object !");
         }
-        stormSprite.color = new Color(1f, 1f, 1f, 0f);
     }
     
     void Update()
     {
-        if (currentStormTimer > 0)
+        if (!stormHasStarted && deathByFall)
         {
-            currentStormTimer -= Time.deltaTime;
+            fallingTimer -= Time.deltaTime;
+            float newScale = fallingTimer / INITIALFALLINGTIMER;
+            player.transform.localScale = new Vector3(newScale, newScale, newScale);
+            if (fallingTimer < 0)
+            {
+                stormHasStarted = true;
+            }
+        }
+        if (currentStormTimer > 0 && stormHasStarted)
+        {
+            if (!deathByFall)
+            {
+                currentStormTimer -= Time.deltaTime;
+            } else
+            {
+                currentStormTimer -= Time.deltaTime * (initialStormTimer / 4);
+            }
             if (currentStormTimer < initialStormTimer / 2)
             {
-                stormSprite.color = new Color(1f, 1f, 1f, 1 - currentStormTimer / (initialStormTimer / 2));
+                stormSprite.color = new Color(deathByFall ? 0 : 1, deathByFall ? 0 : 1, deathByFall ? 0 : 1, 1 - currentStormTimer / (initialStormTimer / 2));
             }
-        } else if (!runningOutOfTime)
+        } else if (!runningOutOfTime && stormHasStarted)
         {
             runningOutOfTime = true;
             TriggerGameOver();
@@ -99,6 +120,14 @@ public class StormTimer : MonoBehaviour
                 }
             }
         }
+        if (gameOverIsFadingIn && Input.GetButtonDown("Jump"))
+        {
+            // TODO : Replace the scene loading with the correct behaviour to restart the night
+            player.transform.localScale = new Vector3(1, 1, 1);
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
 
     private void TriggerGameOver()
@@ -109,8 +138,30 @@ public class StormTimer : MonoBehaviour
         currentGamerOverRestartWaitTimer = INITIALGAMEOVERRESTARTWAITTIMER;
     }
 
+    public void StartStorm()
+    {
+        stormHasStarted = true;
+        runningOutOfTime = false;
+        gameOverIsFadingIn = false;
+        gameOverIsDisplayed = false;
+        gameOverRestartIsFadingIn = false;
+        gameOverRestartIsDisplayed = false;
+        stormSprite.color = new Color(1f, 1f, 1f, 0f);
+    }
+
     public bool HasRunnedOutOfTime()
     {
         return runningOutOfTime;
+    }
+
+    public void TriggerFallGameOver()
+    {
+        if (!deathByFall)
+        {
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+            deathByFall = true;
+            fallingTimer = INITIALFALLINGTIMER;
+            currentStormTimer = initialStormTimer / 2;
+        }
     }
 }
