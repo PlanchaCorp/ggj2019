@@ -67,8 +67,13 @@ public class PictureBehaviour : MonoBehaviour
         }
     }
 
+   
+
+
     public void StartAnimation()
     {
+     
+
         pictureHasStartedDisplaying = true;
         picturehasDisplayed = false;
         pictureIsSkipped = false;
