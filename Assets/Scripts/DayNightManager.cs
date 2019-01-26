@@ -32,7 +32,7 @@ public static class DayNightManager
             GameObject.Find("PlayerAndCamera/UI/SnowStorm").GetComponentInChildren<ParticleSystem>().Stop();
             foreach(GameObject snowLayer in snowLayers)
             {
-                snowLayer.SetActive(true);
+                snowLayer.SetActive(false);
             }
             foreach (GameObject neon in neons)
             {
@@ -48,7 +48,7 @@ public static class DayNightManager
             GameObject.Find("PlayerAndCamera/UI/SnowStorm").GetComponentInChildren<ParticleSystem>().Play();
             foreach (GameObject snowLayer in snowLayers)
             {
-                snowLayer.SetActive(false);
+                snowLayer.SetActive(true);
             }
             foreach (GameObject neon in neons)
             {
