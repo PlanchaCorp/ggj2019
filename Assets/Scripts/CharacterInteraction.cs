@@ -14,6 +14,7 @@ public class CharacterInteraction : MonoBehaviour
     private bool isInteracting;
     private bool canInteractAgain;
 
+    [HideInInspector]
     public List<GameObject> interactibles;
     
     // Start is called before the first frame update
@@ -96,7 +97,7 @@ public class CharacterInteraction : MonoBehaviour
 
         for(int i = 0; i < currentNeonCount; i++)
         {
-           GameObject flare = Instantiate((GameObject)Resources.Load("Prefabs/UI/FlareUI"), GameObject.Find("PlayerAndCamera/UI/Flares").transform);
+           GameObject flare = Instantiate((GameObject)Resources.Load("Prefabs/UI/FlareUI"), GameObject.Find("PlayerAndCamera/UI/Day").transform);
             flare.name = "Flare" + i;
         }
     }
@@ -104,7 +105,7 @@ public class CharacterInteraction : MonoBehaviour
 
     void AddLast()
     {
-        Image[] flares = GameObject.Find("PlayerAndCamera/UI/Flares").GetComponentsInChildren<Image>();
+        Image[] flares = GameObject.Find("PlayerAndCamera/UI/Day").GetComponentsInChildren<Image>();
         Debug.Log(flares.Length);
         Array.Reverse(flares);
         foreach (Image flare in flares)
@@ -118,7 +119,7 @@ public class CharacterInteraction : MonoBehaviour
     }
     void RemoveLast()
     {
-        Image[] flares =  GameObject.Find("PlayerAndCamera/UI/Flares").GetComponentsInChildren<Image>();
+        Image[] flares =  GameObject.Find("PlayerAndCamera/UI/Day").GetComponentsInChildren<Image>();
       
         foreach (Image flare in flares)
         {
