@@ -10,6 +10,8 @@ TagManager:
   - GameOverRestartText
   - Hole
   - Door
+  - Rift
+  - Picture
   layers:
   - Default
   - TransparentFX

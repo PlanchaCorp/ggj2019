@@ -13,15 +13,10 @@ public class CharacterInteraction : MonoBehaviour
     private bool canInteractAgain;
 
     public List<GameObject> interactibles;
-
-
-
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
-
         interactibles = new List<GameObject>();
 
         currentNeonCount = initialNeonCount;
@@ -30,38 +25,37 @@ public class CharacterInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // TODO : Remove
         if (Input.GetKeyDown("n"))
         {
+            Debug.Log("Cheat code activated");
             DayNightManager.SetDay(!DayNightManager.GetDay());
-            DayNightManager.ChangeCycle();
         }
-
-    
+        
         GetComponentInChildren<InteractionCollider>().canInteract(DayNightManager.GetDay());
         
         if (Input.GetButtonDown("Fire2"))
         {
-           
             Queue<GameObject> items = new Queue<GameObject>(interactibles);
             if (items.Count > 0)
             {
                 GameObject item = items.Dequeue();
                 if (item.CompareTag("Neon"))
-                    {
-                        RemoveNeon(item);
-                    }
+                {
+                    RemoveNeon(item);
+                }
                 if (item.CompareTag("Door"))
                 {
-                  
                     item.GetComponentInParent<DoorManager>().Open();
                     interactibles.Remove(item);
                     GameObject.Find("Frame").gameObject.SetActive(false);
                 }
+                if (item.CompareTag("Rift"))
+                {
+                    Destroy(item);
+                    GameObject.FindGameObjectWithTag("Storm").GetComponent<PictureBehaviour>().StartAnimation();
+                }
             }
-           
-           
-
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -89,8 +83,5 @@ public class CharacterInteraction : MonoBehaviour
         neon.transform.position = transform.position;
         DayNightManager.neons = GameObject.FindGameObjectsWithTag("Neon");
     }
-
-
-
-
+    
 }

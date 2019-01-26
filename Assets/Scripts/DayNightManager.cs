@@ -19,7 +19,7 @@ public static class DayNightManager
         ChangeCycle();
     }
 
-    public static void ChangeCycle()
+    private static void ChangeCycle()
     {
         sun.SetActive(day);
         if (day)
@@ -45,6 +45,7 @@ public static class DayNightManager
 
     public static void SetDay(bool day) {
         DayNightManager.day = day;
+        ChangeCycle();
     }
 
     public static bool GetDay()

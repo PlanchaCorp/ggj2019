@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Storm : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Storm : MonoBehaviour
     private float INITIALFALLINGTIMER = 3.0f;
 
     private GameObject player;
-    private SpriteRenderer stormSprite;
+    private Image stormImage;
     private TextMeshProUGUI gameOverTextMesh;
     private TextMeshProUGUI gameOverRestartTextMesh;
     private float currentStormTimer;
@@ -41,10 +42,10 @@ public class Storm : MonoBehaviour
         deathByFall = false;
         stormHasStarted = false;
         currentStormTimer = initialStormTimer;
-        stormSprite = gameObject.GetComponent<SpriteRenderer>();
+        stormImage = transform.Find("GameOverCanvas").GetComponentInChildren<Image>();
         gameOverTextMesh = GameObject.FindGameObjectWithTag("GameOverText").GetComponent<TextMeshProUGUI>();
         gameOverRestartTextMesh = GameObject.FindGameObjectWithTag("GameOverRestartText").GetComponent<TextMeshProUGUI>();
-        if (stormSprite == null)
+        if (stormImage == null)
         {
             Debug.LogError("Storm sprite not attached to Storm object !");
         }
@@ -73,7 +74,7 @@ public class Storm : MonoBehaviour
             }
             if (currentStormTimer < initialStormTimer / 2)
             {
-                stormSprite.color = new Color(deathByFall ? 0 : 1, deathByFall ? 0 : 1, deathByFall ? 0 : 1, 1 - currentStormTimer / (initialStormTimer / 2));
+                stormImage.color = new Color(deathByFall ? 0 : 1, deathByFall ? 0 : 1, deathByFall ? 0 : 1, 1 - currentStormTimer / (initialStormTimer / 2));
             }
         } else if (!runningOutOfTime && stormHasStarted)
         {
@@ -123,10 +124,27 @@ public class Storm : MonoBehaviour
         if (gameOverIsFadingIn && Input.GetButtonDown("Jump"))
         {
             // TODO : Replace the scene loading with the correct behaviour to restart the night
+            deathByFall = false;
             player.transform.localScale = new Vector3(1, 1, 1);
-            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+            if (DayNightManager.GetDay())
+            {
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
+            } else
+            {
+                player.transform.position = GetComponent<PictureBehaviour>().GetPlayerNightInitialPosition();
+                stormHasStarted = false;
+                runningOutOfTime = false;
+                gameOverIsFadingIn = false;
+                gameOverIsDisplayed = false;
+                gameOverRestartIsFadingIn = false;
+                gameOverRestartIsDisplayed = false;
+                stormImage.color = new Color(1f, 1f, 1f, 0f);
+                Color gameOverTextColor = gameOverTextMesh.color;
+                gameOverTextMesh.color = new Color(gameOverTextColor.r, gameOverTextColor.g, gameOverTextColor.b, 0);
+                gameOverRestartTextMesh.color = new Color(gameOverTextColor.r, gameOverTextColor.g, gameOverTextColor.b, 0);
+            }
         }
     }
 
@@ -146,7 +164,7 @@ public class Storm : MonoBehaviour
         gameOverIsDisplayed = false;
         gameOverRestartIsFadingIn = false;
         gameOverRestartIsDisplayed = false;
-        stormSprite.color = new Color(1f, 1f, 1f, 0f);
+        stormImage.color = new Color(1f, 1f, 1f, 0f);
     }
 
     public bool HasRunnedOutOfTime()
@@ -158,7 +176,7 @@ public class Storm : MonoBehaviour
     {
         if (!deathByFall)
         {
-            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             deathByFall = true;
             fallingTimer = INITIALFALLINGTIMER;
             currentStormTimer = initialStormTimer / 2;
