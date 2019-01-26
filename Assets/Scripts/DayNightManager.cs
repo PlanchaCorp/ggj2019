@@ -13,8 +13,6 @@ public static class DayNightManager
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
   public static void InitDay()
     {
-        Debug.Log("Init");
-        Debug.Log("Init");
         day = true;
         sun = GameObject.Find("Sun");
         neons = GameObject.FindGameObjectsWithTag("Neon");
