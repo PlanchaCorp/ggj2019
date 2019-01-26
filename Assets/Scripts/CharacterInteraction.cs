@@ -9,6 +9,8 @@ public class CharacterInteraction : MonoBehaviour
     [SerializeField]
     private int initialNeonCount = 3;
 
+    private Storm storm;
+
     private int currentNeonCount;
 
     private bool isInteracting;
@@ -20,6 +22,7 @@ public class CharacterInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        storm = GameObject.FindGameObjectWithTag("Storm").GetComponent<Storm>();
         interactibles = new List<GameObject>();
 
         currentNeonCount = initialNeonCount;
@@ -42,7 +45,8 @@ public class CharacterInteraction : MonoBehaviour
         {
             return;
         }
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && !GetComponent<CharacterMovement>().IsJumping()
+            && !storm.IsFalling())
         {
             Queue<GameObject> items = new Queue<GameObject>(interactibles);
             if (items.Count > 0)
@@ -66,7 +70,8 @@ public class CharacterInteraction : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !GetComponent<CharacterMovement>().IsJumping() 
+            && storm.IsFalling())
         {
             if (currentNeonCount > 0)
             {

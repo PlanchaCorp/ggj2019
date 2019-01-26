@@ -185,6 +185,11 @@ public class Storm : MonoBehaviour
         return runningOutOfTime;
     }
 
+    public bool IsFalling()
+    {
+        return deathByFall;
+    }
+
     public void TriggerFallGameOver()
     {
         if (!deathByFall)
