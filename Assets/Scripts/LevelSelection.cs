@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelSelection : MonoBehaviour
@@ -45,17 +46,17 @@ public class LevelSelection : MonoBehaviour
 
     public void StartLevel0()
     {
-        Debug.Log("Level 0");
+        SceneManager.LoadScene("Scenes/LD/01_Level_TUTO");
     }
 
     public void StartLevel1()
     {
-        Debug.Log("Level 1");
+        SceneManager.LoadScene("Scenes/LD/02_Level_Cliff");
     }
 
     public void StartLevel2()
     {
-        Debug.Log("Level 2");
+        SceneManager.LoadScene("Scenes/LD/033_Level_Hole");
     }
 
     public void StartLevel3()
