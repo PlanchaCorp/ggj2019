@@ -14,14 +14,14 @@ public class InteractionCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Neon"))
+        if (collision.CompareTag("Neon") || collision.CompareTag("Door"))
         {
             characterInteraction.interactibles.Add(collision.gameObject);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Neon"))
+        if (collision.CompareTag("Neon") || collision.CompareTag("Door"))
         {
             characterInteraction.interactibles.Remove(collision.gameObject);
         }
