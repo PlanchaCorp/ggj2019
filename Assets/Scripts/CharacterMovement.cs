@@ -14,6 +14,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private float jumpDuration = 0.8f;
 
+    private Animator animator;
+
 
     float horizontal;
     float vertical;
@@ -25,6 +27,7 @@ public class CharacterMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -62,14 +65,40 @@ public class CharacterMovement : MonoBehaviour
         if (horizontal != 0 && vertical != 0)
         {
             curSpeed = walkSpeed * 0.7f;
+        } else {
+            curSpeed = walkSpeed;
+        }
+        if (horizontal != 0 || vertical != 0)
+        {
+            animator.SetBool("Walk", true);
         }
         else
         {
-            curSpeed = walkSpeed;
+            animator.SetBool("Walk", false);
         }
+        if (vertical > 0)
+        {
+            animator.SetBool("LookDown", false);
+        } else
+        {
+            animator.SetBool("LookDown", true);
+        }
+        if (horizontal < 0)
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+
+
+        animator.SetBool("Jump", isJumping);
+
         if (isJumping)
         {
             curSpeed = curSpeed * 1.5f;
+            
         }
 
         Vector2 movement = new Vector2(Mathf.Lerp(0, horizontal * curSpeed, 0.8f) * Time.deltaTime, Mathf.Lerp(0, vertical * curSpeed, 0.8f) * Time.deltaTime);
