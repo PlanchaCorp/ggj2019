@@ -44,10 +44,11 @@ public class PictureBehaviour : MonoBehaviour
                 if (Input.GetButtonDown("Jump") && !pictureIsSkipped)
                 {
                     pictureIsSkipped = true;
+                    DayNightManager.SetDay(false);
                     currentPictureFadingOutTime = INITIALPICTUREFADINGOUTTIME;
                 }
             }
-            if (pictureIsSkipped)
+            if (pictureIsSkipped && !pictureHasFadedOut)
             {
                 currentPictureFadingOutTime -= Time.deltaTime;
                 pictureSprite.color = new Color(1, 1, 1, currentPictureFadingOutTime / INITIALPICTUREFADINGOUTTIME);

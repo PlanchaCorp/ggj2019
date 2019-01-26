@@ -28,6 +28,8 @@ public static class DayNightManager
             {
                 LigthController neonLigth = neon.GetComponent<LigthController>();
                 neonLigth.SetDayLigthColor();
+                GameObject.Find("PlayerAndCamera/UI/Day").SetActive(true);
+                GameObject.Find("PlayerAndCamera/UI/Night").SetActive(false);
             }
            
         } else
@@ -36,6 +38,8 @@ public static class DayNightManager
             {
                 LigthController neonLigth = neon.GetComponent<LigthController>();
                 neonLigth.SetNightLightColor();
+                GameObject.Find("PlayerAndCamera/UI/Day").SetActive(false);
+                GameObject.Find("PlayerAndCamera/UI/Night").SetActive(true);
             }
         }
     }

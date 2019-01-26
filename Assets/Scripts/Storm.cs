@@ -50,7 +50,7 @@ public class Storm : MonoBehaviour
             Debug.LogError("Storm sprite not attached to Storm object !");
         }
     }
-    
+
     void Update()
     {
         if (!stormHasStarted && deathByFall)
@@ -68,7 +68,8 @@ public class Storm : MonoBehaviour
             if (!deathByFall)
             {
                 currentStormTimer -= Time.deltaTime;
-            } else
+            }
+            else
             {
                 currentStormTimer -= Time.deltaTime * (initialStormTimer / 4);
             }
@@ -76,7 +77,8 @@ public class Storm : MonoBehaviour
             {
                 stormImage.color = new Color(deathByFall ? 0 : 1, deathByFall ? 0 : 1, deathByFall ? 0 : 1, 1 - currentStormTimer / (initialStormTimer / 2));
             }
-        } else if (!runningOutOfTime && stormHasStarted)
+        }
+        else if (!runningOutOfTime && stormHasStarted)
         {
             runningOutOfTime = true;
             TriggerGameOver();
@@ -92,7 +94,8 @@ public class Storm : MonoBehaviour
                 {
                     gameOverIsDisplayed = true;
                 }
-            } else
+            }
+            else
             {
                 currentGameOverWaitTimer -= Time.deltaTime;
                 if (currentGameOverWaitTimer < 0)
@@ -112,7 +115,8 @@ public class Storm : MonoBehaviour
                 {
                     gameOverRestartIsDisplayed = true;
                 }
-            } else
+            }
+            else
             {
                 currentGamerOverRestartWaitTimer -= Time.deltaTime;
                 if (currentGamerOverRestartWaitTimer < 0)
@@ -131,7 +135,8 @@ public class Storm : MonoBehaviour
             {
                 Scene scene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(scene.name);
-            } else
+            }
+            else
             {
                 player.transform.position = GetComponent<PictureBehaviour>().GetPlayerNightInitialPosition();
                 stormHasStarted = false;
@@ -148,6 +153,10 @@ public class Storm : MonoBehaviour
         }
     }
 
+    public float GetRemainingTimeRatio()
+    {
+        return currentStormTimer / initialStormTimer;
+    }
     private void TriggerGameOver()
     {
         currentGameOverApparitionTimer = INITIALGAMEOVERAPPARITIONTIMER;
