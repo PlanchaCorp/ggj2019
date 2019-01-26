@@ -135,6 +135,7 @@ public class Storm : MonoBehaviour
             {
                 Scene scene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(scene.name);
+                
             }
             else
             {
@@ -151,6 +152,7 @@ public class Storm : MonoBehaviour
                 gameOverTextMesh.color = new Color(gameOverTextColor.r, gameOverTextColor.g, gameOverTextColor.b, 0);
                 gameOverRestartTextMesh.color = new Color(gameOverTextColor.r, gameOverTextColor.g, gameOverTextColor.b, 0);
                 DayNightManager.ChangeCycle();
+                StartStorm();
             }
         }
     }

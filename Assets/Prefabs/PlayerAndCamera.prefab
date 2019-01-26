@@ -785,11 +785,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowStorm
       objectReference: {fileID: 0}
-    - target: {fileID: 3245591031545713278, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4564607226972013168, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -803,7 +798,7 @@ PrefabInstance:
     - target: {fileID: 4564607226972013168, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6894.546
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4564607226972013168, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
         type: 3}
@@ -848,12 +843,12 @@ PrefabInstance:
     - target: {fileID: 4564607226972013168, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1282.9889
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4564607226972013168, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1376.0836
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4564607226972013168, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
         type: 3}
@@ -912,23 +907,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7190114490252487733, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
         type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190114490252487733, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 21.52
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 7190114490252487733, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 21.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 7190114490252487733, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7190114490252487732, guid: 4b70332e8fbf30a40b831fda87ca3ea6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b70332e8fbf30a40b831fda87ca3ea6, type: 3}
