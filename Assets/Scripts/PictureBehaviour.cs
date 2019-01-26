@@ -54,6 +54,7 @@ public class PictureBehaviour : MonoBehaviour
                 if (currentPictureFadingOutTime < 0)
                 {
                     pictureHasFadedOut = true;
+                    DayNightManager.SetDay(false);
                     player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 }
             }
