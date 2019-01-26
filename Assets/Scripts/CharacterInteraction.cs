@@ -107,7 +107,7 @@ public class CharacterInteraction : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Fire1") && !GetComponent<CharacterMovement>().IsJumping() 
-            && storm.IsFalling())
+            && !storm.IsFalling())
         {
             if (currentNeonCount > 0)
             {
