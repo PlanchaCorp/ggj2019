@@ -2,19 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterInteraction : MonoBehaviour
 {
     [SerializeField]
     private int initialNeonCount = 3;
+    private float WINTRANSITIONTIME = 1;
 
     private Storm storm;
+    private Image backgroundImage;
 
     private int currentNeonCount;
+    private float winTransition;
 
     private bool isInteracting;
     private bool canInteractAgain;
+
+    private bool hasWon;
 
     [HideInInspector]
     public List<GameObject> interactibles;
@@ -22,7 +28,9 @@ public class CharacterInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hasWon = false;
         storm = GameObject.FindGameObjectWithTag("Storm").GetComponent<Storm>();
+        backgroundImage = storm.transform.Find("GameOverCanvas").Find("GameOverBackground").GetComponent<Image>();
         interactibles = new List<GameObject>();
 
         currentNeonCount = initialNeonCount;
@@ -32,6 +40,29 @@ public class CharacterInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hasWon)
+        {
+            winTransition -= Time.deltaTime;
+            backgroundImage.color = new Color(1, 1, 1, 1 - winTransition / WINTRANSITIONTIME);
+            if (winTransition < 0)
+            {
+                switch (SceneManager.GetActiveScene().name)
+                {
+                    case "01_Level_TUTO":
+                        PlayerPrefs.SetFloat("Photo0", 1);
+                        SceneManager.LoadScene("MainMenu");
+                        break;
+                    case "02_Level_Cliff":
+                        PlayerPrefs.SetFloat("Photo1", 1);
+                        SceneManager.LoadScene("MainMenu");
+                        break;
+                    case "03_Level_Hole":
+                        PlayerPrefs.SetFloat("Photo2", 1);
+                        SceneManager.LoadScene("MainMenu");
+                        break;
+                }
+            }
+        }
         // TODO : Remove
         if (Input.GetKeyDown("n"))
         {
@@ -66,6 +97,11 @@ public class CharacterInteraction : MonoBehaviour
                 {
                     Destroy(item);
                     GameObject.FindGameObjectWithTag("Storm").GetComponent<PictureBehaviour>().StartAnimation();
+                }
+                if (item.CompareTag("House"))
+                {
+                    hasWon = true;
+                    winTransition = WINTRANSITIONTIME;
                 }
             }
         }
