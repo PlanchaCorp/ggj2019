@@ -112,45 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &56082559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 365792828182426543, guid: 8ee462b403807b5408e17433a84d0382,
-    type: 3}
-  m_PrefabInstance: {fileID: 320338211}
-  m_PrefabAsset: {fileID: 0}
---- !u!251 &56082561
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 56082559}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
---- !u!19719996 &56082562
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 56082559}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
 --- !u!20 &220391721 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2909203716200339670, guid: 143219c35d02de4459fee875a9f9fc85,
@@ -1020,6 +981,35 @@ PrefabInstance:
     - target: {fileID: 6715938900169318768, guid: 2a66906d651f40646adfb6517febbf39,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715938898623793318, guid: 2a66906d651f40646adfb6517febbf39,
+        type: 3}
+      propertyPath: m_TileAssetArray.Array.data[1].m_Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 888ce206a1fd14b4db718e8ab7d9cdf7,
+        type: 2}
+    - target: {fileID: 6715938898623793318, guid: 2a66906d651f40646adfb6517febbf39,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[1].m_Data
+      value: 
+      objectReference: {fileID: 21300046, guid: 1e6ba9a7678ea60459c19a953c395021,
+        type: 3}
+    - target: {fileID: 6715938898623793318, guid: 2a66906d651f40646adfb6517febbf39,
+        type: 3}
+      propertyPath: m_TileAssetArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ff2e400e2a5bf64a8e385324b746e92,
+        type: 2}
+    - target: {fileID: 6715938898623793318, guid: 2a66906d651f40646adfb6517febbf39,
+        type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 21300044, guid: 1e6ba9a7678ea60459c19a953c395021,
+        type: 3}
+    - target: {fileID: 6715938900179858508, guid: 2a66906d651f40646adfb6517febbf39,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
