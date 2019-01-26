@@ -8,7 +8,8 @@ public class PictureBehaviour : MonoBehaviour
     private GameObject player;
     private float INITIALPICTUREFADINGINTIME = 2.0f;
     private float INITIALPICTUREFADINGOUTTIME = 3.0f;
-    private Image pictureSprite;
+    private Image backgroundPictureSprite;
+    private Image memoryPicture;
     private float currentPictureFadingTime;
     private float currentPictureFadingOutTime;
     private bool pictureHasStartedDisplaying;
@@ -18,12 +19,14 @@ public class PictureBehaviour : MonoBehaviour
     private bool pictureHasFadedOut;
     private Vector2 playerNightInitialPosition;
 
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         pictureHasStartedDisplaying = false;
-        pictureSprite = GameObject.FindGameObjectWithTag("Picture").GetComponent<Image>();
+        backgroundPictureSprite = GameObject.FindGameObjectWithTag("Picture").GetComponent<Image>();
+        memoryPicture = GameObject.Find("Picture/Memory").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -34,7 +37,8 @@ public class PictureBehaviour : MonoBehaviour
             if (!picturehasDisplayed)
             {
                 currentPictureFadingTime -= Time.deltaTime;
-                pictureSprite.color = new Color(1, 1, 1, 1 - currentPictureFadingTime / INITIALPICTUREFADINGINTIME);
+                backgroundPictureSprite.color = new Color(1, 1, 1, 1 - currentPictureFadingTime / INITIALPICTUREFADINGINTIME);
+                memoryPicture.color = new Color(1, 1, 1, 1 - currentPictureFadingTime / INITIALPICTUREFADINGINTIME);
                 if (currentPictureFadingTime < 0)
                 {
                     picturehasDisplayed = true;
@@ -51,18 +55,25 @@ public class PictureBehaviour : MonoBehaviour
             if (pictureIsSkipped && !pictureHasFadedOut)
             {
                 currentPictureFadingOutTime -= Time.deltaTime;
-                pictureSprite.color = new Color(1, 1, 1, currentPictureFadingOutTime / INITIALPICTUREFADINGOUTTIME);
+                backgroundPictureSprite.color = new Color(1, 1, 1, currentPictureFadingOutTime / INITIALPICTUREFADINGOUTTIME);
+                memoryPicture.color = new Color(1, 1, 1, currentPictureFadingOutTime / INITIALPICTUREFADINGOUTTIME);
                 if (currentPictureFadingOutTime < 0)
                 {
                     pictureHasFadedOut = true;
                     player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                    GetComponent<Storm>().StartStorm();
                 }
             }
         }
     }
 
+   
+
+
     public void StartAnimation()
     {
+     
+
         pictureHasStartedDisplaying = true;
         picturehasDisplayed = false;
         pictureIsSkipped = false;
