@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterInteraction : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class CharacterInteraction : MonoBehaviour
         interactibles = new List<GameObject>();
 
         currentNeonCount = initialNeonCount;
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -73,6 +76,7 @@ public class CharacterInteraction : MonoBehaviour
         currentNeonCount++;
         Destroy(neon);
         DayNightManager.neons = GameObject.FindGameObjectsWithTag("Neon");
+        AddLast();
     }
 
 
@@ -82,6 +86,48 @@ public class CharacterInteraction : MonoBehaviour
         GameObject neon = Instantiate((GameObject)Resources.Load("Prefabs/Neon"));
         neon.transform.position = transform.position;
         DayNightManager.neons = GameObject.FindGameObjectsWithTag("Neon");
+        RemoveLast();
+
+
+
+    }
+    void UpdateUI()
+    {
+
+        for(int i = 0; i < currentNeonCount; i++)
+        {
+           GameObject flare = Instantiate((GameObject)Resources.Load("Prefabs/UI/FlareUI"), GameObject.Find("PlayerAndCamera/UI/Flares").transform);
+            flare.name = "Flare" + i;
+        }
+    }
+
+
+    void AddLast()
+    {
+        Image[] flares = GameObject.Find("PlayerAndCamera/UI/Flares").GetComponentsInChildren<Image>();
+        Debug.Log(flares.Length);
+        Array.Reverse(flares);
+        foreach (Image flare in flares)
+        {
+            if (!flare.enabled)
+            {
+                flare.enabled = true;
+                return;
+            }
+        }
+    }
+    void RemoveLast()
+    {
+        Image[] flares =  GameObject.Find("PlayerAndCamera/UI/Flares").GetComponentsInChildren<Image>();
+      
+        foreach (Image flare in flares)
+        {
+            if (flare.enabled)
+            {
+                flare.enabled = false;
+                return;
+            }
+        }
     }
     
 }
