@@ -7,6 +7,7 @@ public static class DayNightManager
     private static bool day;
     public static GameObject[] neons;
     private static GameObject sun;
+    private static GameObject[] snowLayers;
 
 
 
@@ -15,8 +16,10 @@ public static class DayNightManager
     {
         day = true;
         sun = GameObject.Find("Sun");
+        snowLayers = GameObject.FindGameObjectsWithTag("Snow");
         neons = GameObject.FindGameObjectsWithTag("Neon");
-        ChangeCycle();
+        if(sun != null && snowLayers != null)
+            ChangeCycle();
     }
 
     public static void ChangeCycle()
@@ -27,6 +30,10 @@ public static class DayNightManager
             GameObject.Find("PlayerAndCamera/UI/Day").SetActive(true);
             GameObject.Find("PlayerAndCamera/UI/Night").SetActive(false);
             GameObject.Find("PlayerAndCamera/UI/SnowStorm").GetComponentInChildren<ParticleSystem>().Stop();
+            foreach(GameObject snowLayer in snowLayers)
+            {
+                snowLayer.SetActive(true);
+            }
             foreach (GameObject neon in neons)
             {
                 LigthController neonLigth = neon.GetComponent<LigthController>();
@@ -39,6 +46,10 @@ public static class DayNightManager
             GameObject.Find("PlayerAndCamera/UI/Night").SetActive(true);
             GameObject.Find("PlayerAndCamera/UI/SnowStorm").GetComponentInChildren<ParticleSystem>().Simulate(1);
             GameObject.Find("PlayerAndCamera/UI/SnowStorm").GetComponentInChildren<ParticleSystem>().Play();
+            foreach (GameObject snowLayer in snowLayers)
+            {
+                snowLayer.SetActive(false);
+            }
             foreach (GameObject neon in neons)
             {
                 LigthController neonLigth = neon.GetComponent<LigthController>();

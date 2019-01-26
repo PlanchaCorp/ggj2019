@@ -37,7 +37,11 @@ public class CharacterInteraction : MonoBehaviour
         }
         
         GetComponentInChildren<InteractionCollider>().canInteract(DayNightManager.GetDay());
-        
+
+        if (!DayNightManager.GetDay())
+        {
+            return;
+        }
         if (Input.GetButtonDown("Fire2"))
         {
             Queue<GameObject> items = new Queue<GameObject>(interactibles);
