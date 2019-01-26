@@ -77,4 +77,8 @@ public class CharacterMovement : MonoBehaviour
     }
 
 
+    public bool IsJumping()
+    {
+        return isJumping;
+    }
 }
