@@ -58,7 +58,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2101217447
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &111219116
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 1135701180690149740}
   m_Layer: 0
   m_Name: PlayerAndCamera
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -841,7 +841,7 @@ PrefabInstance:
     - target: {fileID: 5153177363816134467, guid: 7b21571622774774b9a2d494f4e49ada,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: -1534800141
+      value: -571429529
       objectReference: {fileID: 0}
     - target: {fileID: 5153177363816134467, guid: 7b21571622774774b9a2d494f4e49ada,
         type: 3}

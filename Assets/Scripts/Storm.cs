@@ -9,10 +9,10 @@ public class Storm : MonoBehaviour
 {
     [SerializeField]
     private float initialStormTimer = 10;
-    private float INITIALGAMEOVERWAITTIMER = 1.5f;
-    private float INITIALGAMEOVERAPPARITIONTIMER = 5;
+    private float INITIALGAMEOVERWAITTIMER = 1f;
+    private float INITIALGAMEOVERAPPARITIONTIMER = 3;
     private float INITIALGAMEOVERRESTARTWAITTIMER = 2;
-    private float INITIALGAMEOVERRESTARTAPPARITIONTIMER = 7;
+    private float INITIALGAMEOVERRESTARTAPPARITIONTIMER = 4;
     private float INITIALFALLINGTIMER = 3.0f;
 
     private GameObject player;
@@ -141,6 +141,7 @@ public class Storm : MonoBehaviour
                 player.transform.position = GetComponent<PictureBehaviour>().GetPlayerNightInitialPosition();
                 stormHasStarted = false;
                 runningOutOfTime = false;
+                currentStormTimer = initialStormTimer;
                 gameOverIsFadingIn = false;
                 gameOverIsDisplayed = false;
                 gameOverRestartIsFadingIn = false;
@@ -149,6 +150,7 @@ public class Storm : MonoBehaviour
                 Color gameOverTextColor = gameOverTextMesh.color;
                 gameOverTextMesh.color = new Color(gameOverTextColor.r, gameOverTextColor.g, gameOverTextColor.b, 0);
                 gameOverRestartTextMesh.color = new Color(gameOverTextColor.r, gameOverTextColor.g, gameOverTextColor.b, 0);
+                DayNightManager.ChangeCycle();
             }
         }
     }
@@ -189,6 +191,8 @@ public class Storm : MonoBehaviour
             deathByFall = true;
             fallingTimer = INITIALFALLINGTIMER;
             currentStormTimer = initialStormTimer / 2;
+            GameObject.Find("PlayerAndCamera/UI/Night").SetActive(false);
+            GameObject.Find("PlayerAndCamera/UI/Day").SetActive(false);
         }
     }
 }

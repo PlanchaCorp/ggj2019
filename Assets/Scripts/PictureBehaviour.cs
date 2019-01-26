@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PictureBehaviour : MonoBehaviour
 {
     private GameObject player;
-    private float INITIALPICTUREFADINGINTIME = 3.0f;
+    private float INITIALPICTUREFADINGINTIME = 2.0f;
     private float INITIALPICTUREFADINGOUTTIME = 3.0f;
     private Image pictureSprite;
     private float currentPictureFadingTime;

@@ -11,7 +11,7 @@ public static class DayNightManager
 
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-  public static void InitDay()
+    public static void InitDay()
     {
         day = true;
         sun = GameObject.Find("Sun");
@@ -19,27 +19,27 @@ public static class DayNightManager
         ChangeCycle();
     }
 
-    private static void ChangeCycle()
+    public static void ChangeCycle()
     {
         sun.SetActive(day);
         if (day)
         {
-            foreach(GameObject neon in neons)
+            GameObject.Find("PlayerAndCamera/UI/Day").SetActive(true);
+            GameObject.Find("PlayerAndCamera/UI/Night").SetActive(false);
+            foreach (GameObject neon in neons)
             {
                 LigthController neonLigth = neon.GetComponent<LigthController>();
                 neonLigth.SetDayLigthColor();
-                GameObject.Find("PlayerAndCamera/UI/Day").SetActive(true);
-                GameObject.Find("PlayerAndCamera/UI/Night").SetActive(false);
             }
            
         } else
         {
+            GameObject.Find("PlayerAndCamera/UI/Day").SetActive(false);
+            GameObject.Find("PlayerAndCamera/UI/Night").SetActive(true);
             foreach (GameObject neon in neons)
             {
                 LigthController neonLigth = neon.GetComponent<LigthController>();
                 neonLigth.SetNightLightColor();
-                GameObject.Find("PlayerAndCamera/UI/Day").SetActive(false);
-                GameObject.Find("PlayerAndCamera/UI/Night").SetActive(true);
             }
         }
     }
