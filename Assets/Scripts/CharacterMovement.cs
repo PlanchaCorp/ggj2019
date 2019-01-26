@@ -28,6 +28,7 @@ public class CharacterMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
         animator = GetComponentInChildren<Animator>();
+
     }
 
     // Update is called once per frame

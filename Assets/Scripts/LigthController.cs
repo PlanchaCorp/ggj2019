@@ -22,12 +22,14 @@ public class LigthController : MonoBehaviour
     public void SetNightLightColor()
     {
         neonAnimator = gameObject.GetComponentInChildren<Animator>();
+        GetComponentInChildren<Light>().intensity = 15;
         neonAnimator.SetBool("Night", true);
       
     }
     public void SetDayLigthColor()
     {
         neonAnimator = gameObject.GetComponentInChildren<Animator>();
+        GetComponentInChildren<Light>().intensity = 5;
         neonAnimator.SetBool("Night", false);
     }
 
