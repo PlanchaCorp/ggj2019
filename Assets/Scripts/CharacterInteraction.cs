@@ -33,7 +33,7 @@ public class CharacterInteraction : MonoBehaviour
 
         if (Input.GetKeyDown("n"))
         {
-            DayNightManager.SetDay(false);
+            DayNightManager.SetDay(!DayNightManager.GetDay());
             DayNightManager.ChangeCycle();
         }
 

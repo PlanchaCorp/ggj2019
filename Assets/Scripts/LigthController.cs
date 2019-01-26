@@ -6,6 +6,7 @@ public class LigthController : MonoBehaviour
 {
 
     private Color neonColor;
+    private Animator neonAnimator;
     // Start is called before the first frame update
 
     void Start()
@@ -15,18 +16,19 @@ public class LigthController : MonoBehaviour
         Debug.Log(neonColor.ToString());
         this.GetComponent<SpriteRenderer>().color = neonColor;   
         SetDayLigthColor();
+        neonAnimator = gameObject.GetComponentInChildren<Animator>();
     }
 
     public void SetNightLightColor()
     {
-        
-        this.GetComponentInChildren<Light>().color = new Color(255,172,193);
-        this.GetComponentInChildren<Light>().intensity = 9;
+        neonAnimator = gameObject.GetComponentInChildren<Animator>();
+        neonAnimator.SetBool("Night", true);
+      
     }
     public void SetDayLigthColor()
     {
-        this.GetComponentInChildren<Light>().color = Color.white;
-        this.GetComponentInChildren<Light>().intensity = 5;
+        neonAnimator = gameObject.GetComponentInChildren<Animator>();
+        neonAnimator.SetBool("Night", false);
     }
 
 
