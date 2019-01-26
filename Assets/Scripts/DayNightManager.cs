@@ -37,8 +37,8 @@ public static class DayNightManager
         {
             GameObject.Find("PlayerAndCamera/UI/Day").SetActive(false);
             GameObject.Find("PlayerAndCamera/UI/Night").SetActive(true);
+            GameObject.Find("PlayerAndCamera/UI/SnowStorm").GetComponentInChildren<ParticleSystem>().Simulate(1);
             GameObject.Find("PlayerAndCamera/UI/SnowStorm").GetComponentInChildren<ParticleSystem>().Play();
-            Debug.Log(GameObject.Find("PlayerAndCamera/UI/SnowStorm").GetComponentInChildren<ParticleSystem>().isPlaying);
             foreach (GameObject neon in neons)
             {
                 LigthController neonLigth = neon.GetComponent<LigthController>();
