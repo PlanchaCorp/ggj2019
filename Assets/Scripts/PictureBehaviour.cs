@@ -44,17 +44,17 @@ public class PictureBehaviour : MonoBehaviour
                 if (Input.GetButtonDown("Jump") && !pictureIsSkipped)
                 {
                     pictureIsSkipped = true;
+                    DayNightManager.SetDay(false);
                     currentPictureFadingOutTime = INITIALPICTUREFADINGOUTTIME;
                 }
             }
-            if (pictureIsSkipped)
+            if (pictureIsSkipped && !pictureHasFadedOut)
             {
                 currentPictureFadingOutTime -= Time.deltaTime;
                 pictureSprite.color = new Color(1, 1, 1, currentPictureFadingOutTime / INITIALPICTUREFADINGOUTTIME);
                 if (currentPictureFadingOutTime < 0)
                 {
                     pictureHasFadedOut = true;
-                    DayNightManager.SetDay(false);
                     player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
                 }
             }
