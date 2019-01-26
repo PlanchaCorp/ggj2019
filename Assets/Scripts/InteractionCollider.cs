@@ -6,16 +6,28 @@ public class InteractionCollider : MonoBehaviour
 {
 
     CharacterInteraction characterInteraction;
+    Canvas interactionCanvas;
 
     private void Start()
     {
         characterInteraction = GetComponentInParent<CharacterInteraction>();
+        interactionCanvas = GameObject.Find("InteractionCanvas").GetComponent<Canvas>();
+
+    }
+
+    public void canInteract(bool canInteract)
+    {
+      
+            GetComponent<CircleCollider2D>().enabled = canInteract;
+
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Neon") || collision.CompareTag("Door"))
         {
+            interactionCanvas.transform.Find("Frame").gameObject.SetActive(true);
             characterInteraction.interactibles.Add(collision.gameObject);
         }
     }
@@ -23,6 +35,7 @@ public class InteractionCollider : MonoBehaviour
     {
         if (collision.CompareTag("Neon") || collision.CompareTag("Door"))
         {
+            interactionCanvas.transform.Find("Frame").gameObject.SetActive(false);
             characterInteraction.interactibles.Remove(collision.gameObject);
         }
        
