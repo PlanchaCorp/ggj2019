@@ -9,6 +9,7 @@ TagManager:
   - GameOverText
   - GameOverRestartText
   - Hole
+  - Door
   layers:
   - Default
   - TransparentFX

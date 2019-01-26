@@ -37,13 +37,12 @@ public class CharacterInteraction : MonoBehaviour
             DayNightManager.ChangeCycle();
         }
 
-        if (!DayNightManager.GetDay())
-        {
-            return;
-        }
+    
+        GetComponentInChildren<InteractionCollider>().canInteract(DayNightManager.GetDay());
+        
         if (Input.GetButtonDown("Fire2"))
         {
-            Debug.Log("interaction");
+           
             Queue<GameObject> items = new Queue<GameObject>(interactibles);
             if (items.Count > 0)
             {
@@ -54,8 +53,10 @@ public class CharacterInteraction : MonoBehaviour
                     }
                 if (item.CompareTag("Door"))
                 {
-                    Debug.Log("door");
+                  
                     item.GetComponentInParent<DoorManager>().Open();
+                    interactibles.Remove(item);
+                    GameObject.Find("Frame").gameObject.SetActive(false);
                 }
             }
            
