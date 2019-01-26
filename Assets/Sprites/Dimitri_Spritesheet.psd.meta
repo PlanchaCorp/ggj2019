@@ -8,6 +8,12 @@ TextureImporter:
     21300006: Dimitri_Spritesheet_3
     21300008: Dimitri_Spritesheet_4
     21300010: Dimitri_Spritesheet_5
+    21300012: Dimitri_Spritesheet_6
+    21300014: Dimitri_Spritesheet_7
+    21300016: Dimitri_Spritesheet_8
+    21300018: Dimitri_Spritesheet_9
+    21300020: Dimitri_Spritesheet_10
+    21300022: Dimitri_Spritesheet_11
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -94,6 +100,66 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e4d02b2d9864b943a53eb392541941b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dimitri_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ec5bf1c5fcdff40ab22dbad598e8fc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dimitri_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c855ccde84739c4991ed9fcf569a4a5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dimitri_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 64
         width: 32
         height: 32
@@ -104,13 +170,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 192613a4209241c4ca67acc2b8c46c60
+      spriteID: 7a9cb8d123180224e8dbba9b0863faee
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimitri_Spritesheet_1
+      name: Dimitri_Spritesheet_4
       rect:
         serializedVersion: 2
         x: 32
@@ -124,13 +190,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2d7af99853e2b344b1059ba0c06da25
+      spriteID: a698ee980b62a49498c83db1df45bdde
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimitri_Spritesheet_2
+      name: Dimitri_Spritesheet_5
       rect:
         serializedVersion: 2
         x: 64
@@ -144,13 +210,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3827d8f5235a3cf4192bf148e5580341
+      spriteID: 65afb560ec8dc804582be189d7a21053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimitri_Spritesheet_3
+      name: Dimitri_Spritesheet_6
       rect:
         serializedVersion: 2
         x: 0
@@ -164,13 +230,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c672de9a9debeec468f64f505feb9993
+      spriteID: ad9a7e4214fbeb84ab2be4f931a7579a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimitri_Spritesheet_4
+      name: Dimitri_Spritesheet_7
       rect:
         serializedVersion: 2
         x: 32
@@ -184,13 +250,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b549d32c67bcd18489c9545f7250143f
+      spriteID: 1ef656846a1012f4692c5616773523f7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dimitri_Spritesheet_5
+      name: Dimitri_Spritesheet_8
       rect:
         serializedVersion: 2
         x: 64
@@ -204,7 +270,67 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbdae7c9c9dfc4f45b85ff87a92939a1
+      spriteID: 4b01d3638a60a324caf6d269578b483f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dimitri_Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561f7a5cd7da8254790358784ce46fef
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dimitri_Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a197486098daef41b2af883c5cf836a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dimitri_Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60048a9b061db344392ddf7952e43156
       vertices: []
       indices: 
       edges: []
