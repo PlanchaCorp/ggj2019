@@ -1442,6 +1442,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 988719728, guid: e3930f941a1611a4785ae36d72a2b9da, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2922d34b45485ea489d43a5705b88772,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3930f941a1611a4785ae36d72a2b9da, type: 3}
 --- !u!1001 &1358850060
