@@ -42,6 +42,7 @@ public class CharacterInteraction : MonoBehaviour
     {
         if (hasWon)
         {
+            Debug.Log(winTransition);
             winTransition -= Time.deltaTime;
             backgroundImage.color = new Color(1, 1, 1, 1 - winTransition / WINTRANSITIONTIME);
             if (winTransition < 0)
@@ -60,6 +61,9 @@ public class CharacterInteraction : MonoBehaviour
                         PlayerPrefs.SetFloat("Photo2", 1);
                         SceneManager.LoadScene("MainMenu");
                         break;
+                    default:
+                        SceneManager.LoadScene("MainMenu");
+                        break;
                 }
             }
         }
@@ -71,11 +75,7 @@ public class CharacterInteraction : MonoBehaviour
         }
         
         GetComponentInChildren<InteractionCollider>().canInteract(DayNightManager.GetDay());
-
-        if (!DayNightManager.GetDay())
-        {
-            return;
-        }
+        
         if (Input.GetButtonDown("Fire2") && !GetComponent<CharacterMovement>().IsJumping()
             && !storm.IsFalling())
         {
@@ -83,11 +83,11 @@ public class CharacterInteraction : MonoBehaviour
             if (items.Count > 0)
             {
                 GameObject item = items.Dequeue();
-                if (item.CompareTag("Neon"))
+                if (item.CompareTag("Neon") && DayNightManager.GetDay())
                 {
                     RemoveNeon(item);
                 }
-                if (item.CompareTag("Door"))
+                if (item.CompareTag("Door") && DayNightManager.GetDay())
                 {
                     item.GetComponentInParent<DoorManager>().Open();
                     interactibles.Remove(item);
@@ -98,16 +98,11 @@ public class CharacterInteraction : MonoBehaviour
                     Destroy(item);
                     GameObject.FindGameObjectWithTag("Storm").GetComponent<PictureBehaviour>().StartAnimation();
                 }
-                if (item.CompareTag("House"))
-                {
-                    hasWon = true;
-                    winTransition = WINTRANSITIONTIME;
-                }
             }
         }
 
         if (Input.GetButtonDown("Fire1") && !GetComponent<CharacterMovement>().IsJumping() 
-            && !storm.IsFalling())
+            && !storm.IsFalling() && DayNightManager.GetDay())
         {
             if (currentNeonCount > 0)
             {
@@ -175,5 +170,13 @@ public class CharacterInteraction : MonoBehaviour
             }
         }
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Home"))
+        {
+            hasWon = true;
+            winTransition = WINTRANSITIONTIME;
+        }
+    }
 }

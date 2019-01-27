@@ -13,6 +13,7 @@ TagManager:
   - Rift
   - Picture
   - Snow
+  - Home
   layers:
   - Default
   - TransparentFX
