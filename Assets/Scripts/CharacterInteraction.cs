@@ -77,7 +77,13 @@ public class CharacterInteraction : MonoBehaviour
             Debug.Log("Cheat code activated");
             DayNightManager.SetDay(!DayNightManager.GetDay());
         }
-        
+
+        if (Input.GetKeyDown("r"))
+        {
+            Debug.Log("Reloading level");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         GetComponentInChildren<InteractionCollider>().canInteract(DayNightManager.GetDay());
         
         if (Input.GetButtonDown("Fire2") && !GetComponent<CharacterMovement>().IsJumping()
