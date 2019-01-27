@@ -13,6 +13,8 @@ public class CharacterMovement : MonoBehaviour
     private bool isJumping;
     [SerializeField]
     private float jumpDuration = 0.8f;
+    private Vector2 lastPlayerPosition;
+    private float footstepAccumulatedTime;
 
     private Animator animator;
 
@@ -25,6 +27,7 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        footstepAccumulatedTime = 0;
         rb = GetComponent<Rigidbody2D>();
         isJumping = false;
         animator = GetComponentInChildren<Animator>();
@@ -46,8 +49,23 @@ public class CharacterMovement : MonoBehaviour
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
         }
-        
+        OrientFootsteps();
     }
+
+    private void OrientFootsteps()
+    {
+        footstepAccumulatedTime += Time.deltaTime;
+        if (footstepAccumulatedTime > 0.25f)
+        {
+            if (lastPlayerPosition != null)
+            {
+                GetComponent<ParticleSystem>().startRotation = Vector2.SignedAngle(Vector2.down, new Vector2(transform.position.x - lastPlayerPosition.x, transform.position.y - lastPlayerPosition.y)); ;
+            }
+            lastPlayerPosition = transform.position;
+            footstepAccumulatedTime = 0;
+        }
+    }
+
     private void FixedUpdate()
     {
         Move(isJumping);

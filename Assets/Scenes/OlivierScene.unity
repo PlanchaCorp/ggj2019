@@ -1780,6 +1780,30 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 698471611, guid: 143219c35d02de4459fee875a9f9fc85, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.21568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 698471611, guid: 143219c35d02de4459fee875a9f9fc85, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.5943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 698471611, guid: 143219c35d02de4459fee875a9f9fc85, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.58592916
+      objectReference: {fileID: 0}
+    - target: {fileID: 698471611, guid: 143219c35d02de4459fee875a9f9fc85, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.58592916
+      objectReference: {fileID: 0}
+    - target: {fileID: 698471611, guid: 143219c35d02de4459fee875a9f9fc85, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 698471611, guid: 143219c35d02de4459fee875a9f9fc85, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 143219c35d02de4459fee875a9f9fc85, type: 3}
 --- !u!1 &1888375904
