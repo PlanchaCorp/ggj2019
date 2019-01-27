@@ -86,7 +86,7 @@ public class CharacterInteraction : MonoBehaviour
 
         GetComponentInChildren<InteractionCollider>().canInteract(DayNightManager.GetDay());
         
-        if (Input.GetButtonDown("Fire2") && !GetComponent<CharacterMovement>().IsJumping()
+        if (Input.GetButtonDown("Pickup") && !GetComponent<CharacterMovement>().IsJumping()
             && !storm.IsFalling())
         {
             Queue<GameObject> items = new Queue<GameObject>(interactibles);
@@ -111,7 +111,7 @@ public class CharacterInteraction : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && !GetComponent<CharacterMovement>().IsJumping() 
+        if (Input.GetButtonDown("PlaceObject") && !GetComponent<CharacterMovement>().IsJumping() 
             && !storm.IsFalling() && DayNightManager.GetDay())
         {
             if (currentNeonCount > 0)
