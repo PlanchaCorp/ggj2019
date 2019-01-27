@@ -24,7 +24,24 @@ public class InteractionCollider : MonoBehaviour
     {
         if (collision.CompareTag("Neon") || collision.CompareTag("Door") || collision.CompareTag("Rift"))
         {
-            interactionCanvas.transform.Find("Frame").GetComponentInChildren<TextMeshProUGUI>().text = collision.tag;
+            
+            switch (collision.tag)
+            {
+                case "Neon":
+                    interactionCanvas.transform.Find("Frame").GetComponentInChildren<TextMeshProUGUI>().text = "Pickup";
+                    break;
+                case "Door":
+                    interactionCanvas.transform.Find("Frame").GetComponentInChildren<TextMeshProUGUI>().text = "Open";
+                    break;
+                case "Rift":
+                    interactionCanvas.transform.Find("Frame").GetComponentInChildren<TextMeshProUGUI>().text = "Remember";
+                    break;
+                default:
+                    interactionCanvas.transform.Find("Frame").GetComponentInChildren<TextMeshProUGUI>().text = collision.name;
+                    break;
+            }
+            
+           
             interactionCanvas.transform.Find("Frame").gameObject.SetActive(true);
             characterInteraction.interactibles.Add(collision.gameObject);
         }
