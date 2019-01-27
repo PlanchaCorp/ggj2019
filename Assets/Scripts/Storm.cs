@@ -76,7 +76,7 @@ public class Storm : MonoBehaviour
             }
             if (currentStormTimer < initialStormTimer / 2)
             {
-                stormImage.color = new Color(deathByFall ? 0 : 1, deathByFall ? 0 : 1, deathByFall ? 0 : 1, 1 - currentStormTimer / (initialStormTimer / 2));
+                stormImage.color = new Color(deathByFall ? 0 : 1, deathByFall ? 0 : 1, deathByFall ? 0 : 1, 1 - currentStormTimer / (initialStormTimer / 10));
             }
         }
         else if (!runningOutOfTime && stormHasStarted)
@@ -126,7 +126,7 @@ public class Storm : MonoBehaviour
                 }
             }
         }
-        if (gameOverIsFadingIn && Input.GetButtonDown("Jump"))
+        if (gameOverIsFadingIn && Input.GetButtonDown("Pickup"))
         {
             // TODO : Replace the scene loading with the correct behaviour to restart the night
             deathByFall = false;
