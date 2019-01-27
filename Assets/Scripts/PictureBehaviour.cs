@@ -46,7 +46,7 @@ public class PictureBehaviour : MonoBehaviour
                 }
             } else
             {
-                if (Input.GetButtonDown("Pickup") && !pictureIsSkipped)
+                if (Input.GetButtonDown("Jump") && !pictureIsSkipped)
                 {
                     pictureIsSkipped = true;
                     DayNightManager.SetDay(false);
