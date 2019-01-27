@@ -41,6 +41,7 @@ public class PictureBehaviour : MonoBehaviour
                 memoryPicture.color = new Color(1, 1, 1, 1 - currentPictureFadingTime / INITIALPICTUREFADINGINTIME);
                 if (currentPictureFadingTime < 0)
                 {
+                    GameObject.Find("PlayerAndCamera/UI/CompassBase").SetActive(false);
                     picturehasDisplayed = true;
                 }
             } else

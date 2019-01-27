@@ -171,6 +171,7 @@ public class Storm : MonoBehaviour
 
     public void StartStorm()
     {
+        GameObject.Find("PlayerAndCamera/UI/CompassBase").SetActive(false);
         stormHasStarted = true;
         runningOutOfTime = false;
         gameOverIsFadingIn = false;

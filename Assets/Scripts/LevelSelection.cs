@@ -56,11 +56,11 @@ public class LevelSelection : MonoBehaviour
 
     public void StartLevel2()
     {
-        SceneManager.LoadScene("Scenes/LD/033_Level_Hole");
+        SceneManager.LoadScene("Scenes/LD/03_Level_Hole");
     }
 
     public void StartLevel3()
     {
-        Debug.Log("Level 3");
+        SceneManager.LoadScene("Scenes/LD/04_Level_Final");
     }
 }
