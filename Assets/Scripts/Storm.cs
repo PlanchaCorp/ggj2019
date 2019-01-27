@@ -38,6 +38,7 @@ public class Storm : MonoBehaviour
 
     void Start()
     {
+        DayNightManager.InitDay();
         player = GameObject.FindGameObjectWithTag("Player");
         deathByFall = false;
         stormHasStarted = false;
@@ -171,7 +172,6 @@ public class Storm : MonoBehaviour
 
     public void StartStorm()
     {
-        GameObject.Find("PlayerAndCamera/UI/CompassBase").SetActive(false);
         stormHasStarted = true;
         runningOutOfTime = false;
         gameOverIsFadingIn = false;

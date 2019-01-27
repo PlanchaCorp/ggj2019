@@ -9,9 +9,7 @@ public static class DayNightManager
     private static GameObject sun;
     private static GameObject[] snowLayers;
 
-
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    
     public static void InitDay()
     {
         day = true;
@@ -19,7 +17,9 @@ public static class DayNightManager
         snowLayers = GameObject.FindGameObjectsWithTag("Snow");
         neons = GameObject.FindGameObjectsWithTag("Neon");
         if(sun != null && snowLayers != null)
+        {
             ChangeCycle();
+        }
     }
 
     public static void ChangeCycle()
