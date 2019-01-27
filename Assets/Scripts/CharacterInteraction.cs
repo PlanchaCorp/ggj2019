@@ -61,6 +61,10 @@ public class CharacterInteraction : MonoBehaviour
                         PlayerPrefs.SetFloat("Photo2", 1);
                         SceneManager.LoadScene("MainMenu");
                         break;
+                    case "04_Level_Final":
+                        PlayerPrefs.SetFloat("Photo3", 1);
+                        SceneManager.LoadScene("MainMenu");
+                        break;
                     default:
                         SceneManager.LoadScene("MainMenu");
                         break;
@@ -173,7 +177,7 @@ public class CharacterInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Home"))
+        if (collision.CompareTag("Home") && !DayNightManager.GetDay())
         {
             hasWon = true;
             winTransition = WINTRANSITIONTIME;

@@ -22,7 +22,7 @@ public class InteractionCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Neon") || collision.CompareTag("Door") || collision.CompareTag("Rift") || collision.CompareTag("Home"))
+        if (collision.CompareTag("Neon") || collision.CompareTag("Door") || collision.CompareTag("Rift"))
         {
             interactionCanvas.transform.Find("Frame").GetComponentInChildren<TextMeshProUGUI>().text = collision.tag;
             interactionCanvas.transform.Find("Frame").gameObject.SetActive(true);
@@ -31,7 +31,7 @@ public class InteractionCollider : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Neon") || collision.CompareTag("Door") || collision.CompareTag("Rift") || collision.CompareTag("Home"))
+        if (collision.CompareTag("Neon") || collision.CompareTag("Door") || collision.CompareTag("Rift"))
         {
             interactionCanvas.transform.Find("Frame").gameObject.SetActive(false);
             characterInteraction.interactibles.Remove(collision.gameObject);
