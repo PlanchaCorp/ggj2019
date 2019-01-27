@@ -213,7 +213,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0eb2db1cbe829fe4c9122dfe1ee8c62b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9f3d4e519f9723540a0bc216b750cd10, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -452,7 +452,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d2c81d535c956e84c90ddc89d1ca3cf1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 69447213f8b687f4eb116883419c5320, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -740,7 +740,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2909203716200339672}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.770241, y: 2.6834784, z: -10.148493}
+  m_LocalPosition: {x: 11.604921, y: 23.762009, z: -10.280409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1135701180690149740}
@@ -5927,11 +5927,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1135701180690149740}
     m_Modifications:
-    - target: {fileID: 2191519186147167243, guid: 7b21571622774774b9a2d494f4e49ada,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 2191519186147167241, guid: 7b21571622774774b9a2d494f4e49ada,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5986,6 +5981,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191519186147167243, guid: 7b21571622774774b9a2d494f4e49ada,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5153177363816134467, guid: 7b21571622774774b9a2d494f4e49ada,
         type: 3}
