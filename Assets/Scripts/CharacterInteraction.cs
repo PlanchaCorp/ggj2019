@@ -72,12 +72,12 @@ public class CharacterInteraction : MonoBehaviour
             }
         }
         // TODO : Remove
-        /*
+        
         if (Input.GetKeyDown("n"))
         {
             Debug.Log("Cheat code activated");
             DayNightManager.SetDay(!DayNightManager.GetDay());
-        }*/
+        }
 
         if (Input.GetKeyDown("r"))
         {
